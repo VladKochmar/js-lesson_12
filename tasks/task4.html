@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 4</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Додаткове завдання 4</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function getRandomNum(minVal, maxVal) {
+         return minVal + Math.floor(Math.random() * (maxVal - minVal + 1))
+      }
+
+      function generateRandomArray(elemsNumber, minVal, maxVal) {
+         let arr = []
+
+         for (let i = 0; i < elemsNumber; i++) {
+            const randomNum = getRandomNum(minVal, maxVal)
+            arr.push(randomNum)
+         }
+
+         return arr
+      }
+
+      function bubbleSort(arr) {
+         let changed
+         do {
+            changed = false
+            for (let i = 1; i < arr.length; i++) {
+               if (arr[i - 1] < arr[i]) {
+                  [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
+                  document.write(`<div class="text">${arr}</div>`)
+                  changed = true
+               }
+            }
+         } while (changed)
+      }
+
+      function coctailSort(arr) {
+         let leftIndex = 0, rightIndex = arr.length - 1
+
+         while (leftIndex < rightIndex) {
+            for (let i = leftIndex; i < rightIndex; i++) {
+               if (arr[i + 1] > arr[i]) {
+                  [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
+                  document.write(`<div class="text">${arr}</div>`)
+               }
+            }
+            leftIndex++
+
+            for (let i = rightIndex; i > rightIndex; i--) {
+               if (arr[i - 1] < arr[i]) {
+                  [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]]
+                  document.write(`<div class="text">${arr}</div>`)
+               }
+            }
+            rightIndex--
+         }
+      }
+
+      function insertSort(arr) {
+         let key, i
+
+         for (let k = 1; k < arr.length; k++) {
+            key = arr[k]
+            i = k - 1
+            while (i >= 0 && arr[i] < key) {
+               arr[i + 1] = arr[i]
+               i--
+            }
+            arr[i + 1] = key
+            document.write(`<div class="text">${arr}</div>`)
+         }
+      }
+
+      const arrForBubbleSort = generateRandomArray(7, -10, 30)
+
+      document.write(`<div class="text">Початковий масив (Для сортування бульбашкою): ${arrForBubbleSort}</div>`)
+      bubbleSort(arrForBubbleSort)
+
+      const arrForCoctailSort = generateRandomArray(7, -10, 30)
+
+      document.write(`<div class="text">Початковий масив (Для сортування змішуванням): ${arrForCoctailSort}</div>`)
+      coctailSort(arrForCoctailSort)
+
+      const arrForInsertSort = generateRandomArray(7, -10, 30)
+      document.write(`<div class="text">Початковий масив (Для сортування включеннями): ${arrForInsertSort}</div>`)
+      insertSort(arrForInsertSort)
+   </script>
+</body>
+
+</html>

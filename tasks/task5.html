@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 5</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Додаткове завдання 5</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function insertSort(arr) {
+         let key, i
+
+         for (let k = 1; k < arr.length; k++) {
+            key = arr[k]
+            i = k - 1
+
+            while (i >= 0 && arr[i] > key) {
+               arr[i + 1] = arr[i]
+               i--
+            }
+            arr[i + 1] = key
+         }
+      }
+
+      function binarySearchIndex(arr, searchElem) {
+         let start = 0, end = arr.length - 1
+
+         while (start <= end) {
+            const middle = Math.floor((start + end) / 2)
+            if (arr[middle] === searchElem) return middle
+            if (arr[middle] < searchElem) start = middle + 1
+            if (arr[middle] > searchElem) end = middle - 1
+         }
+         return -1
+      }
+
+      const arr = ['Vlad', 'Kate', 'Dmytro', 'Tima', 'Natalya', 'Stepan', 'Olga', 'Oleg']
+      insertSort(arr)
+      const searchedNameIndex = binarySearchIndex(arr, 'Olga')
+      document.write(`
+         <div class="text">Початковий масив: ${arr}</div>
+         <div class="text">Індекс з ім'ям Olga: ${searchedNameIndex}</div>
+      `)
+      get
+   </script>
+</body>
+
+</html>

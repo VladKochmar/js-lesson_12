@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 3</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Додаткове завдання 3</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function getRandomNum(minVal, maxVal) {
+         return minVal + Math.floor(Math.random() * (maxVal - minVal + 1))
+      }
+
+      function generateRandomArray(elemsNumber, minVal, maxVal) {
+         let arr = []
+
+         for (let i = 0; i < elemsNumber; i++) {
+            const randomNum = getRandomNum(minVal, maxVal)
+            arr.push(randomNum)
+         }
+
+         return arr
+      }
+
+      function getNumOfSwapsInInsertSort(arr) {
+         let key, i, numOfChanges = 0
+
+         for (let k = 1; k < arr.length; k++) {
+            key = arr[k]
+            i = k - 1
+            while (i >= 0 && arr[i] > key) {
+               arr[i + 1] = arr[i]
+               i--
+               numOfChanges++
+            }
+            arr[i + 1] = key
+         }
+
+         return numOfChanges
+      }
+
+      const arr = generateRandomArray(30, 10, 50)
+      const numberOfChanges = getNumOfSwapsInInsertSort(arr)
+
+      document.write(`
+         <div class="text">Масив: ${arr}</div>
+         <div class="text">Кількість змін: ${numberOfChanges}</div>
+      `)
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 1</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Обов'язкове завдання 1</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function getRandomNum(minVal, maxVal) {
+         return minVal + Math.floor(Math.random() * (maxVal - minVal + 1))
+      }
+
+      function generateRandomArray(elemsNumber, minVal, maxVal) {
+         let arr = []
+
+         for (let i = 0; i < elemsNumber; i++) {
+            const randomNum = getRandomNum(minVal, maxVal)
+            arr.push(randomNum)
+         }
+
+         return arr
+      }
+
+      function countBubbleSortSwaps(arr) {
+         let changed, numOfChanges = 0
+
+         do {
+            changed = false
+
+            for (let i = 1; i < arr.length; i++) {
+               if (arr[i - 1] > arr[i]) {
+                  [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
+                  changed = true
+                  numOfChanges++
+               }
+            }
+
+         } while (changed)
+
+         return numOfChanges
+      }
+
+      const arr = generateRandomArray(30, 1, 50)
+      const numberOfChanges = countBubbleSortSwaps(arr)
+
+      document.write(`
+         <div class="text">Масив: ${arr}</div>
+         <div class="text">Кількість змін: ${numberOfChanges}</div>
+      `)
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 6</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Додаткове завдання 6</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function insertSortByLength(arr) {
+         let key, i
+
+         for (let k = 1; k < arr.length; k++) {
+            key = arr[k]
+            i = k - 1
+
+            while (i >= 0 && arr[i].length > key.length) {
+               arr[i + 1] = arr[i]
+               i--
+            }
+            arr[i + 1] = key
+         }
+      }
+
+      function findSelectedLengthIndex(arr, searchedLength) {
+         let start = 0, end = arr.length - 1
+
+         while (start <= end) {
+            const middle = Math.floor((start + end) / 2)
+            if (arr[middle].length === searchedLength) return middle
+            if (arr[middle].length < searchedLength) start = middle + 1
+            if (arr[middle].length > searchedLength) end = middle - 1
+         }
+
+         return -1
+      }
+
+      const arr = ['Vladyslav', 'Kate', 'Dmytro', 'Tima', 'Smith', 'Natalya', 'Stepan', 'Olga', 'Oleg']
+      insertSortByLength(arr)
+
+      const searchedIndex = findSelectedLengthIndex(arr, 5)
+      document.write(`
+         <div class="text">Початковий масив: ${arr}</div>
+         <div class="text">Індекс ім'я рівного 5: ${searchedIndex}</div>
+      `)
+   </script>
+</body>
+
+</html>

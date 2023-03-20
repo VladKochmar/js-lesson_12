@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 2</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Додаткове завдання 2</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      function getRandomNum(minVal, maxVal) {
+         return minVal + Math.floor(Math.random() * (maxVal - minVal + 1))
+      }
+
+      function generateRandomArray(elemsNumber, minVal, maxVal) {
+         let arr = []
+
+         for (let i = 0; i < elemsNumber; i++) {
+            const randomNum = getRandomNum(minVal, maxVal)
+            arr.push(randomNum)
+         }
+
+         return arr
+      }
+
+      function getNumOfSwapsInCoctailSort(arr) {
+         let numOfChanges = 0,
+            leftIndex = 0,
+            rightIndex = arr.length - 1
+
+         while (leftIndex < rightIndex) {
+            for (let index = leftIndex; index < rightIndex; index++) {
+               if (arr[index] > arr[index + 1]) {
+                  [arr[index], arr[index + 1]] = [arr[index + 1], arr[index]]
+                  numOfChanges++
+               }
+            }
+            leftIndex++
+
+            for (let index = rightIndex; index > leftIndex; index--) {
+               if (arr[index] < arr[index - 1]) {
+                  [arr[index - 1], arr[index]] = [arr[index], arr[index - 1]]
+                  numOfChanges++
+               }
+            }
+            rightIndex--
+         }
+
+         return numOfChanges
+      }
+
+      const arr = generateRandomArray(30, 10, 50)
+      const numberOfChanges = getNumOfSwapsInCoctailSort(arr)
+
+      document.write(`
+         <div class="text">Масив: ${arr}</div>
+         <div class="text">Кількість змін: ${numberOfChanges}</div>
+      `)
+   </script>
+</body>
+
+</html>
